@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="user">
+	<typeAlias alias="user" type="com.trh.enity.User" />
+	<resultMap class="com.trh.enity.User" id="user"  >
+		<result property="uid" column="u_id" />
+		<result property="name" column="u_name" />
+		<result property="age" column="age" />
+		<result property="other" column="other" />
+	</resultMap>
+
+	<select id="queryUser" resultMap="user" parameterClass="string">
+
+		SELECT u.u_id,u.u_name,u.age,u.other
+		FROM t_sys_user u
+		WHERE u.u_id = #value#
+
+	</select>
+	
+	<select id="queryUser2" resultClass="com.trh.enity.User" parameterClass="user" remapResults="true">
+	
+		SELECT 
+		<isEqual property="isAbc" compareValue="true" >
+			u.u_id 'uid',
+		</isEqual>
+		
+		u.u_name 'name',u.age 'age',u.other
+		FROM t_sys_user u
+		WHERE u.u_id = 123
+
+	</select>
+
+	<update id="editUser" parameterClass="user">
+		UPDATE t_sys_user u
+		SET u.u_name = #name#
+		WHERE u.u_id = #uid#
+
+	</update>
+
+</sqlMap>

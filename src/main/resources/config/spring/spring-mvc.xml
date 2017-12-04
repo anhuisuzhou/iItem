@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd 
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<!-- 	
+	 -->
+	<mvc:view-controller path="/" view-name="index" />
+	<mvc:view-controller path="/login" view-name="login" />
+	  
+	<context:component-scan base-package="com.trh"/>
+	<context:component-scan base-package="com.trh.controller" />
+	<context:component-scan base-package="com.trh.service.impl" />
+	<context:component-scan base-package="com.trh.dao.impl" />
+	
+	<mvc:default-servlet-handler/>
+    <mvc:resources mapping="/images/**" location="/resources/**/images/" />
+    <mvc:resources mapping="/css/**" location="/css/**" />
+    <mvc:resources mapping="/js/**" location="/js/**" />
+    <mvc:resources mapping="/video/**" location="/video/**" />
+	
+	<task:executor id="executor" pool-size="1" /> 
+    <task:scheduler id="scheduler" pool-size="1" />
+    <task:annotation-driven executor="executor" scheduler="scheduler" />
+    
+     
+</beans>
