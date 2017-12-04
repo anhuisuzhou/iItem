@@ -17,7 +17,8 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  * @author trh
  * 2017-6-11
  */
-public class UserProducer { //默认连接用户名
+public class UserProducer {
+    //默认连接用户名
     private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;
     //默认连接密码
     private static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD;
