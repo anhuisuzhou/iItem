@@ -1,12 +1,25 @@
 package com.trh.enity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 	
 	Integer uid;
 	String name;
 	int age;
 	String other;
-	
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"uid=" + uid +
+				", name='" + name + '\'' +
+				", age=" + age +
+				", other='" + other + '\'' +
+				", isAbc=" + isAbc +
+				'}';
+	}
+
 	Boolean isAbc;
 	public Integer getUid() {
 		return uid;

@@ -19,6 +19,7 @@ public class UserServiceTest extends BaseServiceTest{
 	public void testQueryUser(){
 		Result<User> result   = userService.queryUser("123");
 		User user = result.getOther();
+		System.out.println(user);
 		
 //		Assert.assertEquals("is right", 1, user.getAge());
 	}
